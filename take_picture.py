@@ -23,7 +23,7 @@ def cam_recognize(sid, name, detection_file, dataset_folder, recognition_file):
         faces = faceCascade.detectMultiScale(
             gray,
             scaleFactor=1.1,
-            minNeighbors=5,
+            minNeighbors=12,
             minSize=(100, 100)
         )
         r = 15
@@ -64,7 +64,7 @@ def cam_recognize(sid, name, detection_file, dataset_folder, recognition_file):
             print(sampleNum)
         # Display the resulting frame
         cv.imshow('Capture - Face detection', frame)
-        if sampleNum >= 51:
+        if sampleNum >= 50:
             train_image(detection_file, dataset_folder, recognition_file)
             time.sleep(0.30)
             showinfo(title='Image Side', message='Image successfully taken.')

@@ -80,6 +80,8 @@ def ImageRecognition():
             if 20 <= conf <= 65:
                 no = "SID: " + str(sid)
                 name = "Name: " + str(row[1])
+                hall = "Hall: " + str(row[7])
+                seat = "Seat: " + str(row[8])
                 ts = time.time()
                 date = datetime.fromtimestamp(
                     ts).strftime('%y-%m-%d')
@@ -107,6 +109,8 @@ def ImageRecognition():
                 name = ""
                 status = ""
                 masked = ""
+                hall = ""
+                seat = ""
             cv.putText(frame, no, (x, y + h + 30),
                        font, 0.5, (5, 5, 5), 2)
             cv.putText(frame, name, (x, y + h + 50),
@@ -115,6 +119,10 @@ def ImageRecognition():
                        font, 0.5, (5, 5, 5), 2)
             cv.putText(frame, masked, (x, y + h + 90),
                        font, 0.5, (0, 0, 255), 2)
+            cv.putText(frame, hall, (x, y + h + 110),
+                       font, 0.5, (5, 5, 5), 2)
+            cv.putText(frame, seat, (x, y + h + 130),
+                       font, 0.5, (5, 5, 5), 2)
 
         cv.imshow('Recognition Window', frame)
 
