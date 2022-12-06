@@ -98,7 +98,8 @@ def login():
     def login_validation():
         # getting form data and applying empty validation
         if username_entry.get() == "" or password_entry.get == "":
-            messagebox.showerror("Error", "All field required!")
+            messagebox.showerror(
+                "Error", "Username and password cannot be empty!")
         else:
             conn = db_connection.DbCheck.connection
             my_cursor = conn.cursor()
@@ -112,7 +113,7 @@ def login():
                 Login.destroy()
                 main_window.Main()
             conn.commit()
-            conn.close()
+            # conn.close()
 
     login_button = Button(main_frame, text="LOGIN", cursor="hand2", font=(
         "helvetica", 10), bg="#3399CC", fg="white", command=login_validation)

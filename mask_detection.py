@@ -3,7 +3,7 @@
 
 # # Load the custom cascade
 # face_cascade = cv2.CascadeClassifier(
-#     'haarcascades/mask_cascade.xml')
+#     'data_classifier_2/cascade.xml')
 
 # # To capture video from webcam.
 # cap = cv2.VideoCapture(0)
@@ -18,7 +18,7 @@
 #     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 #     # Detect the faces
 #     faces = face_cascade.detectMultiScale(
-#         gray, scaleFactor=1.02, minNeighbors=12, minSize=(80, 80), flags=cv2.CASCADE_SCALE_IMAGE)
+#         gray, scaleFactor=1.3, minNeighbors=12, minSize=(80, 80), flags=cv2.CASCADE_SCALE_IMAGE)
 #     # faces = face_cascade.detectMultiScale(gray, scaleFactor=1.2, minNeighbors=6, minSize=(24,24),flags=cv2.CASCADE_SCALE_IMAGE)
 #     # Draw the rectangle around each face
 #     for (x, y, w, h) in faces:
@@ -58,7 +58,7 @@ bw_threshold = 80
 # User message
 font = cv2.FONT_HERSHEY_SIMPLEX
 org = (30, 30)
-weared_mask_font_color = (255, 255, 255)
+weared_mask_font_color = (0, 0, 0)
 not_weared_mask_font_color = (0, 0, 255)
 thickness = 2
 font_scale = 1
@@ -117,7 +117,8 @@ while 1:
                     cv2.putText(img, not_weared_mask, org, font, font_scale,
                                 not_weared_mask_font_color, thickness, cv2.LINE_AA)
 
-                    #cv2.rectangle(img, (mx, my), (mx + mh, my + mw), (0, 0, 255), 3)
+                    cv2.rectangle(
+                        roi_color, (mx, my), (mx + mh, my + mw), (0, 0, 255), 3)
                     break
 
     # Show frame with results
