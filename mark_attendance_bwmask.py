@@ -22,15 +22,24 @@ def ImageRecognition():
     nose_cascade = cv.CascadeClassifier(
         'haarcascades/haarcascade_mcs_nose.xml')
 
+    # Adjust threshold value in range 80 to 105 based on your light.
+    bw_threshold = 80
+
     cam = cv.VideoCapture(0)
     font = cv.FONT_ITALIC
     while True:
         ret, frame = cam.read()
         gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
+
+        # Convert image in black and white
+        (thresh,  black_and_white) = cv.threshold(
+            gray, bw_threshold, 255, cv.THRESH_BINARY)
+        cv.imshow('black_and_white', black_and_white)
+
         faces = facecascade.detectMultiScale(gray, 1.1, 10)
         if faces == ():
             face_mask = maskcascade.detectMultiScale(
-                gray, 1.08, 12, minSize=(80, 80), flags=cv.CASCADE_SCALE_IMAGE)
+                gray, 1.02, 12, minSize=(80, 80), flags=cv.CASCADE_SCALE_IMAGE)
             r = 15
             d = 10
             color = (255, 238, 66)
@@ -128,9 +137,9 @@ def ImageRecognition():
                 cv.putText(frame, seat, (x1-100, y1+60),
                            font, 0.5, mask_color, 2)
                 cv.putText(frame, no, (x, y + h + 30),
-                           font, 0.5, (5, 5, 5), 2)
+                           font, 0.5, (255, 255, 255), 2)
                 cv.putText(frame, name, (x, y + h + 50),
-                           font, 0.5, (5, 5, 5), 2)
+                           font, 0.5, (255, 255, 255), 2)
                 cv.putText(frame, masked, (x, y + h + 70),
                            font, 0.5, mask_color, 2)
                 cv.putText(frame, status, (x, y + h + 90),
@@ -252,9 +261,9 @@ def ImageRecognition():
                 cv.putText(frame, seat_no, (x1-100, y1+60),
                            font, 0.5, mask_color, 2)
                 cv.putText(frame, no, (x, y + h + 30),
-                           font, 0.5, (5, 5, 5), 2)
+                           font, 0.5, (255, 255, 255), 2)
                 cv.putText(frame, name, (x, y + h + 50),
-                           font, 0.5, (5, 5, 5), 2)
+                           font, 0.5, (255, 255, 255), 2)
                 cv.putText(frame, masked, (x, y + h + 70),
                            font, 0.5, mask_color, 2)
                 cv.putText(frame, status, (x, y + h + 90),

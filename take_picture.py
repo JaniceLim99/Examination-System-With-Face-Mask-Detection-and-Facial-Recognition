@@ -64,7 +64,7 @@ def cam_recognize(sid, name, detection_file, dataset_folder, recognition_file):
             print(sampleNum)
         # Display the resulting frame
         cv.imshow('Capture - Face detection', frame)
-        if sampleNum >= 50:
+        if sampleNum >= 51:
             train_image(detection_file, dataset_folder, recognition_file)
             time.sleep(0.30)
             showinfo(title='Image Side', message='Image successfully taken.')
