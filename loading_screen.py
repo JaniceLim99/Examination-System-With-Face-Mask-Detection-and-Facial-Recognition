@@ -55,7 +55,7 @@ title_lbl_03 = Label(main_frame, text='AND FACIAL RECOGNITION', font=(
     fg='#b2cdbd', bg='#191d2b')
 title_lbl_03.place(x=50, y=170)
 
-creator_lbl = Label(main_frame, text='Creator: 141200024', font=(
+creator_lbl = Label(main_frame, text='Creator: 141200014', font=(
     "helvetica", 10),
     fg='#b2cdbd', bg='#191d2b')
 creator_lbl.place(x=510, y=210)

@@ -101,19 +101,20 @@ def login():
             messagebox.showerror(
                 "Error", "Username and password cannot be empty!")
         else:
+            # establishing a connection to the database
             conn = db_connection.DbCheck.connection
             my_cursor = conn.cursor()
+            # check if the user exists
             my_cursor.execute(
                 "Select * from admin where username=%s and password=%s", (username_entry.get(), password_entry.get()))
             row = my_cursor.fetchone()
+            # if user not exists
             if row == None:
                 messagebox.showerror("Error", "Invalid username and password!")
             else:
-                # Login.after_cancel(Login.after(time))
                 Login.destroy()
                 main_window.Main()
             conn.commit()
-            # conn.close()
 
     login_button = Button(main_frame, text="LOGIN", cursor="hand2", font=(
         "helvetica", 10), bg="#3399CC", fg="white", command=login_validation)

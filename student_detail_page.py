@@ -470,6 +470,7 @@ class StudentDetailPage(tk.Frame):
                 connection.commit()
                 self.fetch_data()
                 connection.close()
+                self.reset_data()
                 messagebox.showinfo(
                     "Delete", "Selected Student Record Deactivate Successfully", parent=master)
             except Exception as e:
@@ -477,15 +478,19 @@ class StudentDetailPage(tk.Frame):
 
 # ------reset function------
     def reset_data(self):
-        self.var_std_id.set("")
-        self.var_std_name.set("")
-        self.var_std_phone.set("")
-        self.var_std_gender.set("Male")
-        self.var_std_email.set("")
-        self.var_programme.set("Select Programme")
-        self.var_course.set("Select Course Code")
-        self.var_exam_hall.set("Select Hall")
-        self.var_seat_no.set("Select Seat")
+        if self.var_std_name.get() == "":
+            messagebox.showerror(
+                "Error", "No record can be reset.", parent=master)
+        else:
+            self.var_std_id.set("")
+            self.var_std_name.set("")
+            self.var_std_phone.set("")
+            self.var_std_gender.set("Male")
+            self.var_std_email.set("")
+            self.var_programme.set("Select Programme")
+            self.var_course.set("Select Course")
+            self.var_exam_hall.set("Select Hall")
+            self.var_seat_no.set("Select Seat")
 
 # -------search function------
     def search_data(self):
@@ -507,6 +512,6 @@ class StudentDetailPage(tk.Frame):
                     connection.commit()
                     connection.close()
                 else:
-                    messagebox.showerror('Error', 'Cannot find data')
+                    messagebox.showerror('Error', 'No data found')
             except Exception as e:
                 messagebox.showerror("Error while connecting to MySQL", e)
