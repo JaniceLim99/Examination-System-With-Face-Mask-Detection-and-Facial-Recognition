@@ -33,7 +33,7 @@ progress = Progressbar(root,
                        length=690,
                        mode='determinate')
 
-img = Image.open('images\wawasan.png')
+img = Image.open('images/wawasan.png')
 img = img.resize((80, 60), Image.ANTIALIAS)
 photo_img = ImageTk.PhotoImage(img)
 

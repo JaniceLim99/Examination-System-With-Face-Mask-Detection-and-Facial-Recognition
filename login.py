@@ -120,7 +120,7 @@ def login():
         "helvetica", 10), bg="#3399CC", fg="white", command=login_validation)
     login_button.place(x=500, y=410, width=300, height=30)
 
-    logo_img = Image.open('images\wawasan.png')
+    logo_img = Image.open('images/wawasan.png')
     logo_img = logo_img.resize((80, 60), Image.ANTIALIAS)
     photo_img = ImageTk.PhotoImage(logo_img)
 
